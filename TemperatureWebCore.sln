@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureWebCore", "TemperatureWebCore\TemperatureWebCore.csproj", "{62BE5295-9F19-4FAF-87CC-48B2B8DF08E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62BE5295-9F19-4FAF-87CC-48B2B8DF08E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62BE5295-9F19-4FAF-87CC-48B2B8DF08E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62BE5295-9F19-4FAF-87CC-48B2B8DF08E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62BE5295-9F19-4FAF-87CC-48B2B8DF08E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {673448CB-D24D-41E4-BB1B-29712C633F6D}
+	EndGlobalSection
+EndGlobal
