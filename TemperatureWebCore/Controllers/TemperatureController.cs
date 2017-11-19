@@ -17,7 +17,28 @@ namespace TemperatureWebCore.Controllers
         {
             try
             {
-                ViewBag.Value = _repository.GetCurrentTemperature()?.Temperature;
+                var timeFormat = "{0:yyyy-MM-dd HH:mm:ss}";
+                var currentTemp = _repository.GetCurrentTemperature();
+                var maxTemp = _repository.GetMaxTemperature();
+                var minTemp = _repository.GetMinTemperature();
+
+                if (currentTemp != null)
+                {
+                    ViewBag.CurrentTime = string.Format(timeFormat, currentTemp.Time);
+                    ViewBag.CurrentTemp = currentTemp.Temperature.ToString("N1");
+                }
+
+                if (maxTemp != null)
+                {
+                    ViewBag.MaxTime = string.Format(timeFormat, maxTemp.Time);
+                    ViewBag.MaxTemp = maxTemp.Temperature.ToString("N1");
+                }
+
+                if (minTemp != null)
+                {
+                    ViewBag.MinTime = string.Format(timeFormat, minTemp.Time);
+                    ViewBag.MinTemp = minTemp.Temperature.ToString("N1");
+                }
 
                 return View();
             }
