@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using TemperatureWebCore.Data;
-using TemperatureWebCore.Models;
 
 namespace TemperatureWebCore.Controllers
 {
-    [Route("api/[Controller]")]
     public class MeasuresController : Controller
     {
         private readonly IDataRepository _repository;
@@ -15,36 +13,42 @@ namespace TemperatureWebCore.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("api/currenttemp")]
+        public IActionResult GetCurrentTemperature()
         {
             try
             {
-                var result = new Measure();
+                var result = _repository.GetCurrentTemperature();
 
-                if  (Request.Query.ContainsKey("Temp"))
-                {
-                    var tempType = Request.Query["Temp"];
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error has occured: {ex.Message}");
+            }
+        }
 
-                    if (tempType == "current")
-                    {
-                        result = _repository.GetCurrentTemperature();
-                    }
+        [HttpGet("api/maxtemp")]
+        public IActionResult GetMaxTemperature()
+        {
+            try
+            {
+                var result = _repository.GetMaxTemperature();
 
-                    if (tempType == "max")
-                    {
-                        result = _repository.GetMaxTemperature();
-                    }
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error has occured: {ex.Message}");
+            }
+        }
 
-                    if (tempType == "min")
-                    {
-                        result = _repository.GetMinTemperature();
-                    }
-                }
-                else
-                {
-                    result = _repository.GetCurrentTemperature();
-                }
+        [HttpGet("api/mintemp")]
+        public IActionResult GetMinTemperature()
+        {
+            try
+            {
+                var result = _repository.GetMinTemperature();
 
                 return Ok(result);
             }
