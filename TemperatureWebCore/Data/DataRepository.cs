@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TemperatureWebCore.Models;
 
 namespace TemperatureWebCore.Data
@@ -10,6 +11,11 @@ namespace TemperatureWebCore.Data
         public DataRepository(TemperatureContext context)
         {
             _context = context;
+        }
+
+        public List<Measure> GetAllTemperatures()
+        {
+            return _context.Measures.OrderBy(item => item.Id).ToList();
         }
 
         public Measure GetCurrentTemperature()

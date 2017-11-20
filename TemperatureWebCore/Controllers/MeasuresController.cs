@@ -13,6 +13,21 @@ namespace TemperatureWebCore.Controllers
             _repository = repository;
         }
 
+        [HttpGet("api/alltemp")]
+        public IActionResult GetAllTemperatures()
+        {
+            try
+            {
+                var result = _repository.GetAllTemperatures();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error has occured: {ex.Message}");
+            }
+        }
+
         [HttpGet("api/currenttemp")]
         public IActionResult GetCurrentTemperature()
         {
