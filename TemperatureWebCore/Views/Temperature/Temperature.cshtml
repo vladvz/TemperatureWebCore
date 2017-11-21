@@ -1,23 +1,25 @@
 ﻿@section Scripts{ 
 <script src="~/lib/amcharts/dist/amcharts/amcharts.js"></script>
 <script src="~/lib/amcharts/dist/amcharts/serial.js"></script>
+<script src="~/lib/amcharts/dist/amcharts/plugins/dataloader/dataloader.min.js"></script>
+
 <script>
     var chartData = [
-        { "time": "2017-11-01", "temperature": 21.2 },
-        { "time": "2017-11-02", "temperature": 22.3 },
-        { "time": "2017-11-03", "temperature": 24.2 },
-        { "time": "2017-11-04", "temperature": 27.2 },
-        { "time": "2017-11-05", "temperature": 20.2 },
-        { "time": "2017-11-06", "temperature": 19.2 },
-        { "time": "2017-11-07", "temperature": 25.2 },
-        { "time": "2017-11-08", "temperature": 26.2 },
-        { "time": "2017-11-09", "temperature": 24.2 },
-        { "time": "2017-11-10", "temperature": 28.2 },
-        { "time": "2017-11-11", "temperature": 29.2 },
-        { "time": "2017-11-12", "temperature": 31.2 },
-        { "time": "2017-11-13", "temperature": 29.2 },
-        { "time": "2017-11-14", "temperature": 28.2 },
-        { "time": "2017-11-15", "temperature": 27.5 }
+        { "time": "2017-11-01T21:18:01", "temperature": 21.2 },
+        { "time": "2017-11-02T21:18:01", "temperature": 22.3 },
+        { "time": "2017-11-03T21:18:01", "temperature": 24.2 },
+        { "time": "2017-11-04T21:18:01", "temperature": 27.2 },
+        { "time": "2017-11-05T21:18:01", "temperature": 20.2 },
+        { "time": "2017-11-06T21:18:01", "temperature": 19.2 },
+        { "time": "2017-11-07T21:18:01", "temperature": 25.2 },
+        { "time": "2017-11-08T21:18:01", "temperature": 26.2 },
+        { "time": "2017-11-09T21:18:01", "temperature": 24.2 },
+        { "time": "2017-11-10T21:18:01", "temperature": 28.2 },
+        { "time": "2017-11-11T21:18:01", "temperature": 29.2 },
+        { "time": "2017-11-12T21:18:01", "temperature": 31.2 },
+        { "time": "2017-11-13T21:18:01", "temperature": 29.2 },
+        { "time": "2017-11-14T21:18:01", "temperature": 28.2 },
+        { "time": "2017-11-15T21:18:01", "temperature": 27.5 }
     ];
 
     AmCharts.makeChart("chartdiv",
@@ -60,7 +62,10 @@
                     "text": "Daily temperatures"
                 }
             ],
-            "dataProvider": chartData
+            "dataLoader": {
+                "url": "http://localhost:9999/api/alltemp"
+            }
+            //"dataProvider": chartData
         }
     );
 </script>

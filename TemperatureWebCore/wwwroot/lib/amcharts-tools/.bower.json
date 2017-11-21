@@ -1,0 +1,25 @@
+{
+  "name": "amcharts-tools",
+  "version": "1.0.2",
+  "dependencies": {
+    "amcharts3": ">= 3.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ignore": [
+    ".gitignore",
+    ".DS_Store"
+  ],
+  "homepage": "https://github.com/franktopel/amcharts-tools",
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.2",
+    "commit": "54a1717adff66fde1d0f2ff631c8b513e9243bb5"
+  },
+  "_source": "https://github.com/franktopel/amcharts-tools.git",
+  "_target": "v1.0.2",
+  "_originalSource": "amcharts-tools",
+  "_direct": true
+}
