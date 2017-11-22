@@ -28,12 +28,12 @@ namespace TemperatureWebCore.Controllers
             }
         }
 
-        [HttpGet("api/alltemp")]
+        [HttpGet("api/dailytemps")]
         public IActionResult GetDailyMaxTemperatures()
         {
             try
             {
-                var result = _repository.GetDailyMaxTemperatures();
+                var result = _repository.GetDailyTemperatures();
 
                 return Ok(result);
             }

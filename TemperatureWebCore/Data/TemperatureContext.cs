@@ -6,6 +6,7 @@ namespace TemperatureWebCore.Data
     public class TemperatureContext : DbContext
     {
         public DbSet<Measure> Measures { get; set; }
+        public DbSet<DailyTemperature> DailyTemperatures { get; set; }
 
         public TemperatureContext(DbContextOptions options) : base(options)
         {

@@ -18,14 +18,9 @@ namespace TemperatureWebCore.Data
             return _context.Measures.OrderBy(item => item.Id).ToList();
         }
 
-        public List<Measure> GetDailyMaxTemperatures()
+        public List<DailyTemperature> GetDailyTemperatures()
         {
-            return _context.Measures.OrderBy(item => item.Id).ToList();
-        }
-
-        public List<Measure> GetDailyMinTemperatures()
-        {
-            return _context.Measures.OrderBy(item => item.Id).ToList();
+            return _context.DailyTemperatures.OrderBy(item => item.Time).ToList();
         }
 
         public Measure GetCurrentTemperature()
