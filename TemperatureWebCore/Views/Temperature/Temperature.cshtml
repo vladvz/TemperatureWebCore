@@ -2,70 +2,8 @@
 <script src="~/lib/amcharts/dist/amcharts/amcharts.js"></script>
 <script src="~/lib/amcharts/dist/amcharts/serial.js"></script>
 <script src="~/lib/amcharts/dist/amcharts/plugins/dataloader/dataloader.min.js"></script>
-
-<script>
-    AmCharts.makeChart("chartdiv",
-        {
-            "type": "serial",
-            "categoryField": "time",
-            "dataDateFormat": "YYYY-MM-DD",
-            "precision": 1,
-            "categoryAxis": {
-                "parseDates": true
-            },
-            "chartCursor": {
-                "enabled": true
-            },
-            "chartScrollbar": {
-                "enabled": true
-            },
-            "trendLines": [],
-            "graphs": [
-                {
-                    "bullet": "round",
-                    "id": "AmGraph-1",
-                    "title": "Max",
-                    "valueField": "maxTemperature"
-                },
-                {
-                    "bullet": "round",
-                    "id": "AmGraph-2",
-                    "title": "Average",
-                    "valueField": "avgTemperature"
-                },
-                {
-                    "bullet": "round",
-                    "id": "AmGraph-3",
-                    "title": "Min",
-                    "valueField": "minTemperature"
-                }
-            ],
-            "guides": [],
-            "valueAxes": [
-                {
-                    "id": "ValueAxis-1",
-                    "title": ""
-                }
-            ],
-            "allLabels": [],
-            "balloon": {},
-            "legend": {
-                "enabled": true,
-                "useGraphSettings": true
-            },
-            "titles": [
-                {
-                    "id": "Title-1",
-                    "size": 15,
-                    "text": "Daily temperatures"
-                }
-            ],
-            "dataLoader": {
-                "url": "/api/dailytemps"
-            }
-        }
-    );
-</script>
+<script src="~/lib/moment/min/moment.min.js"></script>
+<script src="~/js/chart.js"></script>
 }
 <div style="margin:10px"></div>
 
@@ -99,3 +37,4 @@
 <div style="margin:10px"></div>
 
 <div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+<div id="detailChartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
