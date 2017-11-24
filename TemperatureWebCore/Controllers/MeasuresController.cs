@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using TemperatureWebCore.Data;
+using TemperatureWebCore.Models;
 
 namespace TemperatureWebCore.Controllers
 {
@@ -29,13 +32,32 @@ namespace TemperatureWebCore.Controllers
         }
 
         [HttpGet("api/dailytemps")]
-        public IActionResult GetDailyMaxTemperatures()
+        public IActionResult GetDailyTemperatures()
         {
             try
             {
                 var result = _repository.GetDailyTemperatures();
 
                 return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error has occured: {ex.Message}");
+            }
+        }
+
+        [HttpGet("api/dailytemps/{dateString}")]
+        public IActionResult GetDailyTemperatures(string dateString)
+        {
+            try
+            {
+                if (DateTime.TryParseExact(dateString, "yyyy-MM-dd", null, DateTimeStyles.None, out DateTime date))
+                {
+                    var dailyTempList = _repository.GetDailyTemperatures(date);
+
+                    return Ok(dailyTempList);
+                }
+                return BadRequest("Date is not in expected format");
             }
             catch (Exception ex)
             {

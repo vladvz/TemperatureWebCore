@@ -63,7 +63,7 @@
 var detailChart = AmCharts.makeChart("detailChartdiv",
     {
         "type": "serial",
-        "categoryField": "date",
+        "categoryField": "time",
         "dataDateFormat": "YYYY-MM-DD HH:NN",
         "precision": 1,
         "processCount": 997,
@@ -107,36 +107,6 @@ var detailChart = AmCharts.makeChart("detailChartdiv",
                 "size": 15,
                 "text": "No selection"
             }
-        ],
-        "dataProvider": [
-            {
-                "date": "2014-03-01T07:57:02",
-                "temperature": "22.1"
-            },
-            {
-                "date": "2014-03-01T07:58:03",
-                "temperature": "23.5"
-            },
-            {
-                "date": "2014-03-01T07:59:04",
-                "temperature": "26.1"
-            },
-            {
-                "date": "2014-03-01T08:00:05",
-                "temperature": "28.4"
-            },
-            {
-                "date": "2014-03-01T08:01:06",
-                "temperature": "27.3"
-            },
-            {
-                "date": "2014-03-01T08:02:07",
-                "temperature": "26.9"
-            },
-            {
-                "date": "2014-03-01T08:03:08",
-                "temperature": "25.8"
-            }
         ]
     }
 );
@@ -145,12 +115,15 @@ chart.addListener("clickGraphItem", function (event) {
     var time = event.item.dataContext.time;
 
     if (event.item.dataContext.time != undefined) {
-        var stringDate = moment(time).format("MMM DD, YYYY");
+        var title = moment(time).format("MMM DD, YYYY");
+        var stringDate = moment(time).format("YYYY-MM-DD");
         console.log(stringDate);
 
-        detailChart.titles[0].text = stringDate;
+        detailChart.titles[0].text = title;
         console.log(detailChart.titles[0].text);
 
+        detailChart.dataLoader.url = "/api/dailytemps/" + stringDate;
+        detailChart.dataLoader.loadData();
         detailChart.validateData();
     }
 });

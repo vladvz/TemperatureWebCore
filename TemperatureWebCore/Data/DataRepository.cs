@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TemperatureWebCore.Models;
 
@@ -21,6 +22,15 @@ namespace TemperatureWebCore.Data
         public List<DailyTemperature> GetDailyTemperatures()
         {
             return _context.DailyTemperatures.OrderBy(item => item.Time).ToList();
+        }
+
+        public List<Measure> GetDailyTemperatures(DateTime date)
+        {
+            var endDate = date.AddDays(1);
+
+            return _context.Measures
+                .Where(item => item.Time >= date && item.Time < endDate)
+                .OrderBy(item => item.Time).ToList();
         }
 
         public Measure GetCurrentTemperature()
