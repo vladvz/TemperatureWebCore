@@ -113,8 +113,17 @@ var detailChart = AmCharts.makeChart("detailChartdiv",
 
 chart.addListener("clickGraphItem", function (event) {
     var time = event.item.dataContext.time;
+    getDetailChart(time);
+});
 
-    if (event.item.dataContext.time != undefined) {
+chart.addListener("rendered", function (event) {
+    var time = new Date();
+    console.log("Rendered at " + time);
+    setTimeout(() => getDetailChart(time), 500);
+});
+
+function getDetailChart(time) {
+    if (time != undefined) {
         var title = moment(time).format("MMM DD, YYYY");
         var stringDate = moment(time).format("YYYY-MM-DD");
         console.log(stringDate);
@@ -126,4 +135,4 @@ chart.addListener("clickGraphItem", function (event) {
         detailChart.dataLoader.loadData();
         detailChart.validateData();
     }
-});
+}
