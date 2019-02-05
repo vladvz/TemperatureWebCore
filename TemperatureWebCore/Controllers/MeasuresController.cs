@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using TemperatureWebCore.Data;
-using TemperatureWebCore.Models;
 
 namespace TemperatureWebCore.Controllers
 {
